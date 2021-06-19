@@ -1,0 +1,40 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+.monaco-editor .margin{
+    right: 0;
+    z-index: 4;
+}
+
+/* .minimap .slider-mouseover{
+    left:20px;
+} */
+
+.decorationsOverviewRuler{
+    left: 0;
+}
+
+.invisible .scrollbar .vertical{
+    left: 0;
+}
+
+.monaco-editor .view-line {
+    /* text-align: right; */
+    direction: rtl;
+}
+
+.monaco-mouse-cursor-text{
+    /* text-align: right; */
+}
+
+// Add per line support for RTL without alignment change
+
+.view-line>span:before {
+    content: "\200f";
+}
+
+.view-line>span:after {
+    content: "\200f";
+}

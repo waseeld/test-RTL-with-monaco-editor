@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" style="width: 100%; height: 728px"></div>
+
+		<!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
+		<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="./alif-mod.js"></script>
+    <link rel="stylesheet" href="main.css">
+
+		<script>
+            var text = `
+#ألف
+#واجهة_ويب رئيسية "Main_Window"
+#واجهة_ويب النافذة_الثانية "Dashboard"
+
+نافذة رئيسية 
+
+    دالة تسجيل_الدخول (نص الكلمة) 
+
+        إذا الكلمة = "ألف" أو الكلمة = "alif" أو الكلمة = "1234"
+
+            رئيسية : إخفاء()
+            النافذة_الثانية : إظهار()
+
+        وإلا
+            رسالة("كلمة السر خاطئة !")
+            
+            _ج_ 
+            document.getElementById("MyPassword").value = '';
+            _ج_
+            
+        نهاية إذا
+
+    نهاية دالة
+
+نهاية نافذة
+
+نافذة النافذة_الثانية 
+
+    دالة الخروج ()
+        تطبيق : خروج()
+    نهاية دالة
+
+نهاية نافذة
+`;
+
+			require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+
+			require(['vs/editor/editor.main'], function () {
+				var editor = monaco.editor.create(document.getElementById('container'), {
+					value: text,
+					language: "javascript"
+				});
+			});
+
+            var slider = document.getElementsByClassName("slider-mouseover")
+            var element = document.getElementsByClassName("monaco-scrollable-element editor-scrollable vs")
+
+            setTimeout(() => {
+                slider[0].style.left = "20px"
+                element[0].style.left = "120px"
+
+            }, 1000);
+
+            var viewlines = document.getElementsByClassName("view-line")
+
+            setInterval(() => {
+                for (let index = 0; index < viewlines.length; index++) {
+                    viewlines[index].children[0].dir != "trl" ? '' : console.log("change")
+                    viewlines[index].children[0].dir = "auto"
+                }
+            }, 100);
+		</script>
+</body>
+</html>
